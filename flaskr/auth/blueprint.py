@@ -38,7 +38,6 @@ def login():
 @bp.route('/github_login', methods=('GET', 'POST'))
 def github_login():
     github_form = GithubForm()
-    google_form = GoogleForm()
 
     if github_form.validate_on_submit():
         if not github.authorized:
