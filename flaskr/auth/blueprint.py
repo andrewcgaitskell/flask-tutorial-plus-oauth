@@ -47,9 +47,8 @@ def github_login():
             return github_callback()
 
     return render_template(
-        'auth/login.html', github_form=github_form, google_form=google_form,
-        is_github_found=current_app.config['GITHUB_FOUND'],
-        is_google_found=current_app.config['GOOGLE_FOUND'])
+        'auth/login.html', github_form=github_form,
+        is_github_found=current_app.config['GITHUB_FOUND'])
 
 @bp.route('/github_callback', methods=('GET', 'POST'))
 def github_callback():
@@ -66,11 +65,9 @@ def github_callback():
         return redirect(url_for('index'))
 
     github_form = GithubForm()
-    google_form = GoogleForm()
     return render_template(
-        'auth/login.html', github_form=github_form, google_form=google_form,
-        is_github_found=current_app.config['GITHUB_FOUND'],
-        is_google_found=current_app.config['GOOGLE_FOUND'])
+        'auth/login.html', github_form=github_form,
+        is_github_found=current_app.config['GITHUB_FOUND'])
 
 
 @bp.route('/logout')
